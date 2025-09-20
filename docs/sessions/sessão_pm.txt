@@ -1,0 +1,991 @@
+╭────────────────────────────────────────────────────────────╮
+│ ✻ Welcome to Claude Code!                                  │
+│                                                            │
+│   /help for help, /status for your current setup           │
+│                                                            │
+│   cwd: /mnt/c/users/jaime/documents/github/atividades_pss  │
+╰────────────────────────────────────────────────────────────╯
+
+
+ What's new:
+  • Fix input lag during typing, especially noticeable with large prompts
+
+> /clear 
+  ⎿  (no content)
+
+> /BMad:agents:pm is running… 
+
+● STEP 1-2: ✅ Adopting Product Manager persona
+  STEP 3: Loading project configuration...
+
+● Read(.bmad-core/core-config.yaml)
+  ⎿  Read 23 lines (ctrl+o to expand)
+
+● 📋 John - Product Manager
+
+  Hello! I'm John, your Product Manager agent specializing in PRDs, product strategy, and documentation. I'm focused on creating
+  market-driven, user-centered product documents with strategic precision.
+
+  Available Commands
+
+  1. help - Show this command list
+  2. correct-course - Execute course correction analysis
+  3. create-brownfield-epic - Create epic for existing/brownfield projects
+  4. create-brownfield-prd - Create PRD for brownfield projects
+  5. create-brownfield-story - Create user story from existing requirements
+  6. create-epic - Create epic for brownfield projects
+  7. create-prd - Create new PRD using standard template
+  8. create-story - Create user story from requirements
+  9. doc-out - Output full document to destination file
+  10. shard-prd - Break PRD into smaller component files
+  11. yolo - Toggle Yolo Mode
+  12. exit - Exit PM mode
+
+  Select a number or type a command with * prefix (e.g., *create-prd) to get started. What product challenge can I help you tackle today?
+
+> 8
+
+● Read(.bmad-core/tasks/brownfield-create-story.md)
+  ⎿  Read 150 lines (ctrl+o to expand)
+
+● 📋 Creating Brownfield User Story
+
+  I'm ready to help you create a focused user story for a small brownfield enhancement. This is perfect for changes that can be completed in
+  a single development session (under 4 hours) and follow existing patterns.
+
+  Let's Start with Quick Project Assessment
+
+  Tell me about the enhancement you need:
+
+  1. What specific change or addition do you want to make?
+  2. What existing functionality or system will this integrate with?
+  3. What type of user will benefit from this change?
+  4. What's the main problem this solves or value it provides?
+
+  Once I understand the basic requirements, I'll help you through the structured story creation process, ensuring we identify integration
+  points, follow existing patterns, and create clear acceptance criteria.
+
+  What enhancement are you looking to implement?
+
+> 1. nenhuma por enquanto
+  2. blocos de exercicios de matematica e portugues que trabalham diferentes conceitos ligados aos anos do fundamental 1, escolha de fonte, 
+  repostas coletadas por questão, sistema de feedback e musica de fundo
+  3. os estudantes e eu q coleto os dados e farei um dashboard para visão dos professores
+  4. aprendizado e estimulo ao comportamento de estudar sem alienar o estudante
+
+● 📋 Análise do Projeto
+
+  Baseado na sua descrição, vejo que você tem um sistema educacional completo com:
+
+  - Blocos de exercícios de matemática e português
+  - Configuração de fontes
+  - Sistema de coleta de respostas
+  - Feedback para estudantes
+  - Música de fundo
+  - Dashboard para professores
+
+  Isso parece ser um projeto substancial, não uma pequena modificação brownfield.
+
+  Recomendação de Abordagem
+
+  Para um sistema educacional dessa complexidade, sugiro usar uma abordagem mais robusta:
+
+  Opções mais adequadas:
+
+  1. *create-brownfield-prd - Para criar um PRD completo do sistema educacional
+  2. *create-brownfield-epic - Para quebrar em épicos menores
+  3. *create-prd - Para um novo produto educacional
+
+  A tarefa atual (*create-story) é ideal para pequenas adições como:
+  - Adicionar um novo tipo de exercício
+  - Melhorar um feedback específico
+  - Ajustar uma funcionalidade existente
+
+  Próximos Passos
+
+  Você gostaria de:
+
+  1. Criar um PRD completo para o sistema educacional? (*create-brownfield-prd)
+  2. Quebrar em épicos para desenvolvimento incremental? (*create-brownfield-epic)
+  3. Focar em uma funcionalidade específica pequena para criar uma story?
+
+  Qual abordagem faz mais sentido para seu projeto atual?
+
+> 1
+
+● Read(.bmad-core/tasks/create-doc.md)
+  ⎿  Read 104 lines (ctrl+o to expand)
+
+● Read(.bmad-core/templates/brownfield-prd-tmpl.yaml)
+  ⎿  Read 282 lines (ctrl+o to expand)
+
+● 📋 Criando PRD para Sistema Educacional Brownfield
+
+  Iniciando o processo de criação do PRD usando o template brownfield. Este é um processo interativo estruturado que me permitirá entender
+  completamente seu sistema educacional existente.
+
+  Configuração do Documento:
+  - Formato: Markdown
+  - Arquivo de saída: docs/prd.md
+  - Modo: Interativo com validação contínua
+
+  ---
+  🔍 Análise Inicial do Projeto e Contexto
+
+  Antes de prosseguir, preciso realizar uma avaliação crítica de complexidade:
+
+  Baseado na sua descrição (blocos de exercícios, coleta de dados, dashboard, feedback, música), este parece ser um sistema educacional 
+  substancial que justifica um PRD completo.
+
+  Análise do Projeto Existente
+
+  Vou analisar a estrutura atual do seu projeto para entender o contexto:
+
+● Bash(find /mnt/c/users/jaime/documents/github/atividades_pss -type f -name "*.md" -o -name "*.json" -o -name "*.js" -o -name "*.py" -o -name
+      "*.html" | head -20)
+  ⎿  /mnt/c/users/jaime/documents/github/atividades_pss/.bmad-core/agents/analyst.md    
+     /mnt/c/users/jaime/documents/github/atividades_pss/.bmad-core/agents/architect.md
+     /mnt/c/users/jaime/documents/github/atividades_pss/.bmad-core/agents/bmad-master.md
+     … +17 lines (ctrl+o to expand)
+
+● Bash(ls -la /mnt/c/users/jaime/documents/github/atividades_pss)
+  ⎿  total 200                                            
+     drwxrwxrwx 1 jalencar jalencar   4096 Sep 20 14:07 .
+     drwxrwxrwx 1 jalencar jalencar   4096 Sep 20 09:38 ..
+     … +7 lines (ctrl+o to expand)
+
+● Bash(ls -la /mnt/c/users/jaime/documents/github/atividades_pss/docs)
+  ⎿  total 68                                            
+     drwxrwxrwx 1 jalencar jalencar  4096 Sep 20 14:07 .
+     drwxrwxrwx 1 jalencar jalencar  4096 Sep 20 14:07 ..
+     … +4 lines (ctrl+o to expand)
+
+● Read(docs/brief.md)
+  ⎿  Read 50 lines (ctrl+o to expand)
+
+● Excelente! Agora tenho contexto muito mais claro. Vejo que você já tem documentação substancial do projeto EduDignity - uma plataforma
+  educacional anti-infantilização. Deixe-me continuar analisando:
+
+● Read(docs/brainstorming-session-results.md)
+  ⎿  Read 30 lines (ctrl+o to expand)
+
+● Perfeito! Agora tenho uma compreensão clara do seu projeto EduDignity. Vamos prosseguir com a criação formal do PRD brownfield.
+
+  ---
+  📋 Análise do Projeto Existente
+
+  Fonte da Análise
+
+  ✅ Documentação existente disponível:
+  - Brief completo em docs/brief.md
+  - Resultados de brainstorming em docs/brainstorming-session-results.md
+  - Análise de competidores em docs/competitor-analysis.md
+
+  Estado Atual do Projeto
+
+  EduDignity - Plataforma educacional anti-infantilização para crianças de 6-12 anos com defasagem em letramento e matemática. Sistema
+  projetado para vulnerabilidade socioeconômica, funcionando na realidade adversa (interrupções domésticas, dispositivos compartilhados).
+
+  Documentação Disponível
+
+  ✅ Conceito e problema identificado✅ Análise de público-alvo e mercado✅ Brainstorming técnico e funcional✅ Análise competitiva❌
+  Especificações técnicas detalhadas❌ Arquitetura de sistema❌ Padrões de código
+
+  Tipo de Enhancement
+
+  ☑️ Nova Feature Addition - Sistema completo de blocos educacionais☑️ Major Feature Modification - Dashboard e coleta de dados☑️ Integration
+   with New Systems - Música, fontes, feedback
+
+  Impacto Estimado
+
+  ☑️ Major Impact - Requer mudanças arquiteturais substanciais
+
+  Descrição do Enhancement
+
+  Implementação completa da plataforma EduDignity com blocos de exercícios matemática/português, sistema de coleta de respostas, dashboard
+  para professores, feedback progressivo e música de fundo.
+
+  Objetivos
+
+  • Reduzir defasagem educacional através de automatização de habilidades básicas• Eliminar constrangimento através de design
+  não-infantilizado• Funcionar efetivamente em ambiente doméstico instável• Fornecer dados acionáveis para educadores
+
+  Contexto de Fundo
+
+  O projeto aborda a desconexão sistemática entre linguagem/símbolos abstratos e experiência concreta de crianças em vulnerabilidade
+  socioeconômica. Diferencia-se por não ser "mais uma plataforma gamificada", mas um sistema projetado para tornar-se desnecessário através
+  de desenvolvimento de competência real.
+
+  ---
+  ⚠️ Confirmação Crítica Necessária
+
+  Baseado na minha análise do seu sistema EduDignity, eu entendo que:
+
+  1. O sistema deve trabalhar com interrupções constantes (realidade doméstica instável)
+  2. Design anti-infantilização é fundamental para crianças de 8-11 anos
+  3. Foco em automatização de habilidades básicas, não entretenimento
+  4. Coleta de dados deve servir dashboard para professores
+  5. Feedback progressivo sem punição para quebrar ciclo vergonha→frustração
+
+  Esta compreensão está correta? Há algo crucial que interpretei errado sobre o sistema EduDignity?
+
+  Após sua confirmação, prosseguiremos para os Requisitos Funcionais com elicitação interativa.
+
+> sim prossiga
+
+● ---
+  📋 Requisitos
+
+  Requisitos Funcionais
+
+  Baseado na minha análise do EduDignity e no contexto de anti-infantilização para crianças em vulnerabilidade socioeconômica, elaborei os
+  seguintes requisitos funcionais:
+
+  FR1: O sistema deve oferecer blocos de exercícios de matemática e português segmentados por ano do ensino fundamental (1º ao 5º ano) com
+  progressão adaptativa baseada em competência demonstrada, não idade.
+
+  FR2: O sistema deve permitir configuração de fontes (tamanho, tipo) para acomodar diferentes necessidades visuais e preferências de leitura
+   das crianças.
+
+  FR3: O sistema deve coletar e armazenar respostas detalhadas por questão, incluindo tempo de resposta, tentativas, e padrões de erro para
+  análise educacional.
+
+  FR4: O sistema deve implementar feedback contextual progressivo em três camadas: imediato (0-1s visual), explicativo (2-5s), e de
+  competência (ao completar blocos).
+
+  FR5: O sistema deve oferecer música de fundo opcional e configurável para criar ambiente de concentração sem distração.
+
+  FR6: O sistema deve funcionar offline ou com conectividade intermitente, sincronizando dados quando conexão estiver disponível.
+
+  FR7: O sistema deve implementar sessões curtas (5-15 minutos) com possibilidade de pausa/retomada para acomodar interrupções domésticas.
+
+  FR8: O sistema deve gerar dashboard para professores com visualização de progresso individual e da turma, identificando padrões de
+  dificuldade.
+
+  Requisitos Não-Funcionais
+
+  NFR1: O sistema deve funcionar em dispositivos Android básicos (mínimo 2GB RAM) e computadores com especificações limitadas para
+  acessibilidade socioeconômica.
+
+  NFR2: A interface deve ser projetada com estética não-infantilizada, apropriada para crianças de 8-11 anos que se sentem constrangidas com
+  designs "bebês".
+
+  NFR3: O sistema deve carregar exercícios em menos de 3 segundos mesmo com conexão 3G limitada.
+
+  NFR4: O sistema deve ser capaz de operar com até 50 interrupções por sessão sem perda de progresso ou dados.
+
+  NFR5: Dados de progresso devem ser persistidos localmente com backup automático em nuvem quando disponível.
+
+  Requisitos de Compatibilidade
+
+  CR1: O sistema deve ser compatível com navegadores básicos (Chrome 70+, Firefox 65+) em dispositivos de baixo custo.
+
+  CR2: O sistema deve funcionar sem conflitos em dispositivos compartilhados entre múltiplas crianças/usuários.
+
+  CR3: A música de fundo deve ser compatível com fones de ouvido básicos e alto-falantes de dispositivos móveis.
+
+  CR4: O dashboard deve ser acessível via navegador web padrão para professores com computadores escolares limitados.
+
+  ---
+  💭 Rationale Detalhada
+
+  Decisões-chave tomadas:
+  - Progressão por competência vs. idade: Baseado no brief sobre desconexão concreto↔abstrato
+  - Sessões curtas com pausa: Crítico para realidade de "interrupções domésticas" identificada
+  - Especificações de dispositivos baixo custo: Alinhado ao público socioeconômico vulnerável
+  - Design não-infantilizado: Requisito central para evitar constrangimento de crianças mais velhas
+
+  Áreas que podem precisar validação:
+  - Duração ideal das sessões (5-15min pode ser muito/pouco?)
+  - Especificações técnicas mínimas para dispositivos
+  - Nível de detalhamento da coleta de dados (privacidade vs. utilidade)
+
+  ---
+  🎯 Elicitação Obrigatória - Escolha sua abordagem:
+
+  1. Prosseguir para próxima seção
+
+  2. Personas e Cenários - Criar personas detalhadas da criança vulnerável e professor para validar requisitos
+
+  3. Análise de Tarefas - Mapear step-by-step como criança navega do problema à competência
+
+  4. Benchmarking - Comparar com soluções existentes para identificar gaps nos requisitos
+
+  5. Prototipação Rápida - Esboçar interfaces para validar requisitos de UX não-infantilizada
+
+  6. Questionário Estruturado - Coletar feedback específico sobre cada requisito funcional
+
+  7. Brainstorming - Gerar requisitos adicionais que possam ter sido perdidos
+
+  8. Role Playing - Simular experiência da criança e professor para identificar requisitos missing
+
+  9. Entrevista em Profundidade - Explorar aspectos técnicos e funcionais específicos
+
+  Selecione 1-9 ou digite sua pergunta/feedback:
+
+> 1
+
+● ---
+  🎨 Interface Enhancement Goals
+
+  Integração com UI Existente
+
+  Como este é um novo sistema EduDignity, estabeleceremos padrões de design que seguem os princípios anti-infantilização:
+
+  - Paleta de cores: Tons neutros e profissionais (evitar cores primárias brilhantes)
+  - Tipografia: Fontes legíveis sem características "lúdicas"
+  - Iconografia: Símbolos abstratos/geométricos ao invés de personagens cartoon
+  - Layout: Grid estruturado similar a aplicações "sérias" que crianças mais velhas respeitam
+
+  Telas Modificadas/Novas
+
+  1. Tela Principal de Exercícios - Interface limpa com blocos de atividades
+  2. Tela de Configurações - Ajustes de fonte, música, perfil
+  3. Tela de Progresso - Visualização não-gamificada do avanço
+  4. Dashboard do Professor - Interface web para análise de dados
+  5. Tela de Feedback - Exibição contextual de resultados
+
+  Requisitos de Consistência UI
+
+  - Interface deve transmitir seriedade e respeito pela inteligência da criança
+  - Feedback visual deve ser informativo, não condescendente
+  - Navegação deve ser intuitiva mesmo para crianças com baixa literacia digital
+
+  ---
+  ⚙️ Restrições Técnicas e Requisitos de Integração
+
+  Stack Tecnológico Proposto
+
+  Com base nas necessidades de baixo custo e acessibilidade:
+
+  Linguagens: JavaScript/TypeScript, HTML5, CSS3Framework Frontend: React Native ou Progressive Web AppBackend: Node.js com ExpressBanco de 
+  Dados: SQLite local + PostgreSQL cloud para sincronizaçãoInfraestrutura: Vercel/Netlify para deploy, backup em Google Drive APIDependências
+   Externas: Web Audio API para música, Service Workers para offline
+
+  Estratégia de Integração
+
+  Integração de Banco de Dados:
+  - SQLite local para funcionamento offline
+  - Sincronização bidirecional com PostgreSQL quando online
+  - Estratégia de merge para dados conflitantes
+
+  Integração de API:
+  - RESTful API para dashboard de professores
+  - GraphQL opcional para queries complexas de progresso
+  - Endpoints offline-first com queue de sincronização
+
+  Integração Frontend:
+  - PWA para compatibilidade multi-dispositivo
+  - Component library própria anti-infantilizada
+  - State management com Redux/Zustand para persistência
+
+  Integração de Testes:
+  - Jest para testes unitários
+  - Cypress para testes E2E
+  - Testes de acessibilidade com axe-core
+
+  Organização do Código
+
+  Estrutura de Arquivos:
+  /src
+    /components (UI components reutilizáveis)
+    /screens (telas principais)
+    /services (lógica de negócio)
+    /utils (funções auxiliares)
+    /data (modelos e schemas)
+  /tests
+  /docs
+
+  Convenções de Nomenclatura:
+  - PascalCase para componentes React
+  - camelCase para funções e variáveis
+  - kebab-case para arquivos CSS
+
+  Padrões de Código:
+  - ESLint + Prettier para formatação
+  - TypeScript para type safety
+  - Conventional commits para versionamento
+
+  Padrões de Documentação:
+  - JSDoc para funções críticas
+  - README por módulo
+  - Changelog automatizado
+
+  Deploy e Operações
+
+  Integração de Build:
+  - Webpack/Vite para bundling otimizado
+  - Service Workers para caching inteligente
+  - Minificação agressiva para dispositivos limitados
+
+  Estratégia de Deploy:
+  - CI/CD com GitHub Actions
+  - Deploy automático staging/produção
+  - Rollback automático em caso de erro
+
+  Monitoramento e Logging:
+  - Sentry para error tracking
+  - Analytics básicos de uso (respeitando privacidade)
+  - Logs locais para debug em dispositivos offline
+
+  Gerenciamento de Configuração:
+  - Environment variables para diferentes ambientes
+  - Feature flags para release incremental
+  - Configurações de usuário persistidas localmente
+
+  Avaliação e Mitigação de Riscos
+
+  Baseado no contexto de vulnerabilidade socioeconômica:
+
+  Riscos Técnicos:
+  - Dispositivos com pouco armazenamento → Compressão agressiva e limpeza automática
+  - Conectividade instável → Arquitetura offline-first obrigatória
+  - Processadores lentos → Lazy loading e otimização de performance
+
+  Riscos de Integração:
+  - Sincronização de dados complexa → Implementar estratégia de merge simples
+  - Conflitos de usuário em dispositivos compartilhados → Perfis isolados
+  - Perda de dados → Backup redundante local + cloud
+
+  Riscos de Deploy:
+  - Atualizações quebradas em produção → Rollback automático + testes extensivos
+  - Incompatibilidade de versões → Versionamento semântico rigoroso
+
+  Estratégias de Mitigação:
+  - Testes em dispositivos reais de baixo custo
+  - Beta testing com público-alvo real
+  - Monitoramento proativo de performance
+  - Documentação clara para troubleshooting
+
+  ---
+  ⚠️ Confirmação Técnica Necessária
+
+  Baseado na minha análise do EduDignity, acredito que este enhancement deve ser estruturado como épico único abrangente porque todos os
+  componentes (exercícios, coleta de dados, dashboard, feedback, música) são interdependentes e formam o sistema coeso anti-infantilização.
+
+  Esta decisão de épico único faz sentido considerando a arquitetura integrada necessária?
+
+  Aguardo sua confirmação para prosseguir com a estrutura detalhada de épicos e stories.
+
+> ok
+
+● ---
+  📊 Estrutura de Épicos e Stories
+
+  Abordagem do Épico
+
+  Decisão de Estrutura de Épico: Épico único abrangente - todos os componentes (blocos educacionais, coleta de dados, dashboard, feedback,
+  música) são interdependentes e necessários para entregar o valor anti-infantilização completo do EduDignity.
+
+  ---
+  🎯 Épico 1: Sistema EduDignity Completo - Plataforma Educacional Anti-Infantilização
+
+  Meta do Épico: Implementar plataforma educacional completa que elimina defasagem em letramento/matemática através de design respeitoso,
+  feedback progressivo e funcionamento em ambiente de vulnerabilidade socioeconômica.
+
+  Requisitos de Integração: Sistema offline-first com sincronização cloud, interface anti-infantilizada, coleta de dados educacionais, e
+  funcionamento em dispositivos de baixo custo com interrupções constantes.
+
+  Story 1.1: Infraestrutura Base e Arquitetura Offline-First
+
+  Como um desenvolvedor,Eu quero estabelecer a infraestrutura base offline-first,Para que o sistema funcione efetivamente em ambientes com 
+  conectividade instável.
+
+  Critérios de Aceitação:
+  1. Sistema carrega e funciona completamente offline após primeiro acesso
+  2. Service Workers implementados para cache inteligente de recursos
+  3. SQLite local configurado para persistência de dados
+  4. Sincronização bidirecional com backend quando conectividade disponível
+  5. Interface de loading não-infantilizada durante sincronização
+
+  Verificação de Integração:
+  - IV1: Sistema mantém funcionalidade completa após perda de conexão por 24h
+  - IV2: Dados locais sincronizam corretamente sem duplicação ao reconectar
+  - IV3: Performance permanece < 3s de carregamento em dispositivos 2GB RAM
+
+  Story 1.2: Sistema de Blocos Educacionais Matemática/Português
+
+  Como uma criança de 8-11 anos com defasagem,Eu quero acessar exercícios organizados por competência real, não série,Para que eu possa 
+  progredir sem constrangimento da minha idade.
+
+  Critérios de Aceitação:
+  1. Blocos segmentados por competência em matemática (numeramento, operações básicas, problemas)
+  2. Blocos segmentados por competência em português (decodificação, fluência, compreensão)
+  3. Interface visual limpa, sem personagens cartoon ou cores infantis
+  4. Navegação intuitiva entre blocos com indicadores de progresso discretos
+  5. Sessões limitadas a 5-15 minutos com pausa/retomada automática
+
+  Verificação de Integração:
+  - IV1: Exercícios carregam em < 3s mesmo com conexão 3G
+  - IV2: Progresso salvo localmente a cada resposta para evitar perda em interrupções
+  - IV3: Interface passa em teste de usabilidade com crianças do público-alvo
+
+  Story 1.3: Sistema de Configuração de Fontes e Acessibilidade
+
+  Como uma criança com dificuldades visuais específicas,Eu quero ajustar tamanho e tipo de fonte conforme minha necessidade,Para que eu possa
+   ler confortavelmente sem barreiras adicionais.
+
+  Critérios de Aceitação:
+  1. Selector de tamanho de fonte (pequeno, médio, grande, extra-grande)
+  2. Opções de fonte (sans-serif padrão, dyslexia-friendly, alta legibilidade)
+  3. Configurações persistem entre sessões localmente
+  4. Preview em tempo real das mudanças de fonte
+  5. Interface de configuração acessível e clara
+
+  Verificação de Integração:
+  - IV1: Mudanças de fonte aplicam instantaneamente em todos os exercícios
+  - IV2: Configurações mantidas após logout/login e sincronizam entre dispositivos
+  - IV3: Fontes carregam adequadamente em dispositivos Android básicos
+
+  Story 1.4: Coleta Detalhada de Dados por Questão
+
+  Como um professor,Eu quero dados granulares sobre desempenho de cada criança por questão,Para que eu possa identificar padrões específicos 
+  de dificuldade.
+
+  Critérios de Aceitação:
+  1. Captura tempo de resposta, número de tentativas, tipo de erro por questão
+  2. Armazenamento local com backup cloud automático
+  3. Anonização de dados sensíveis respeitando LGPD
+  4. Logs de padrões de interrupção e retomada de sessões
+  5. Metadata de contexto (dispositivo, horário, duração de sessão)
+
+  Verificação de Integração:
+  - IV1: Coleta funciona mesmo durante instabilidade de conexão
+  - IV2: Dados sincronizam com dashboard sem perda de granularidade
+  - IV3: Performance de coleta não impacta responsividade da interface
+
+  Story 1.5: Sistema de Feedback Contextual Progressivo
+
+  Como uma criança em processo de aprendizagem,Eu quero feedback que me ajude sem me envergonhar,Para que eu possa aprender com erros sem 
+  desenvolver aversão ao estudo.
+
+  Critérios de Aceitação:
+  1. Feedback imediato (0-1s): visual discreto indicando esforço registrado
+  2. Feedback explicativo (2-5s): dica contextual sobre processo de resolução
+  3. Feedback de competência: celebração respeitosa ao completar blocos
+  4. Zero linguagem condescendente ou infantilizada
+  5. Opção de desabilitar feedback para crianças que preferem autonomia
+
+  Verificação de Integração:
+  - IV1: Sistema de feedback não interfere na fluidez dos exercícios
+  - IV2: Mensagens de feedback carregam instantaneamente sem delay perceptível
+  - IV3: Feedback validado com público-alvo para confirmar tom respeitoso
+
+  Story 1.6: Sistema de Música de Fundo Configurável
+
+  Como uma criança que precisa de ambiente de concentração,Eu quero música de fundo opcional e controlável,Para que eu possa criar um 
+  ambiente que me ajude a focar.
+
+  Critérios de Aceitação:
+  1. Biblioteca de música instrumental não-distratora
+  2. Controles de volume e liga/desliga acessíveis
+  3. Música continua entre exercícios sem interrupção
+  4. Compatibilidade com fones de ouvido básicos
+  5. Configuração persiste entre sessões
+
+  Verificação de Integração:
+  - IV1: Música não impacta performance de carregamento dos exercícios
+  - IV2: Audio funciona consistentemente em dispositivos Android de baixo custo
+  - IV3: Sistema de música não interfere com leitores de tela para acessibilidade
+
+  Story 1.7: Dashboard Web para Professores
+
+  Como um professor em escola pública,Eu quero visualizar progresso individual e da turma via navegador,Para que eu possa adaptar minha 
+  estratégia pedagógica com dados reais.
+
+  Critérios de Aceitação:
+  1. Interface web responsiva funcionando em computadores escolares básicos
+  2. Visualizações de progresso individual com gráficos claros
+  3. Análise de turma identificando padrões coletivos de dificuldade
+  4. Relatórios exportáveis para reuniões pedagógicas
+  5. Login seguro e gerenciamento de múltiplas turmas
+
+  Verificação de Integração:
+  - IV1: Dashboard carrega em < 5s mesmo com conexão escolar limitada
+  - IV2: Dados dos estudantes sincronizam em tempo real quando disponível
+  - IV3: Interface funciona em navegadores antigos comuns em escolas públicas
+
+  ---
+  🔍 Elicitação Obrigatória - Validação da Sequência de Stories
+
+  Rationale da Sequência: As stories foram ordenadas priorizando infraestrutura crítica primeiro (offline-first), seguida pelo core
+  educacional (blocos + feedback), acessibilidade (fontes), coleta de dados, funcionalidades de bem-estar (música), e finalmente dashboard
+  para stakeholders externos.
+
+  Considerações de Risco: Cada story mantém funcionalidade existente (não há sistema anterior para quebrar), com rollback simples via
+  controle de versão. Dependências são claras: infraestrutura → core educacional → features auxiliares → dashboard.
+
+  Esta sequência de stories minimiza riscos e entrega valor incremental considerando as limitações de conectividade e dispositivos do 
+  público-alvo?
+
+  ---
+  🎯 Elicitação - Escolha sua abordagem:
+
+  1. Finalizar PRD e gerar documento completo
+
+  2. Análise de Dependências - Mapear dependências técnicas entre stories
+
+  3. Estimativa de Esforço - Calcular complexidade e tempo por story
+
+  4. Análise de Riscos - Identificar riscos específicos por story
+
+  5. Priorização MoSCoW - Classificar features como Must/Should/Could/Won't
+
+  6. Validação com Stakeholders - Simular apresentação para professores/gestores
+
+  7. Brainstorming de Edge Cases - Explorar cenários não previstos
+
+  8. Roadmap Temporal - Definir cronograma de desenvolvimento
+
+  9. Estratégia de MVP - Identificar versão mínima viável
+
+  Selecione 1-9 ou digite sua pergunta/feedback:
+
+> 1, eu já fiz a elicitação antes no processo de brief
+
+● Write(docs/prd.md)
+  ⎿  Wrote 343 lines to docs/prd.md         
+     # EduDignity Brownfield Enhancement PRD
+     **Data de Criação:** 20/09/2025
+     **Versão:** v1.0
+     **Autor:** John - Product Manager
+     ---
+     ## Intro Project Analysis and Context
+     … +333 lines (ctrl+o to expand)
+
+● ✅ PRD EduDignity Criado com Sucesso
+
+  📋 Documento Finalizado
+
+  Arquivo: docs/prd.md
+
+  Conteúdo completo do PRD brownfield para EduDignity incluindo:
+
+  ✅ Análise do projeto existente baseada na documentação atual✅ 8 Requisitos funcionais detalhados✅ 5 Requisitos não-funcionais focados em
+   performance/acessibilidade✅ 4 Requisitos de compatibilidade para dispositivos baixo custo✅ Estratégia técnica completa com stack
+  tecnológico proposto✅ 7 Stories estruturadas em épico único abrangente✅ Critérios de aceitação e verificação de integração por story
+
+  🎯 Próximos Passos Recomendados
+
+  1. *create-brownfield-epic - Para detalhar implementação das stories
+  2. *shard-prd - Para quebrar PRD em arquivos menores por seção
+  3. Revisão técnica com equipe de desenvolvimento
+  4. Validação com educadores do público-alvo
+
+  O PRD está pronto para orientar o desenvolvimento do sistema EduDignity seguindo os princípios anti-infantilização e funcionalidade em
+  ambiente de vulnerabilidade socioeconômica.
+
+> 1
+
+● Read(.bmad-core/tasks/brownfield-create-epic.md)
+  ⎿  Read 163 lines (ctrl+o to expand)
+
+● ⚠️ Análise de Compatibilidade de Tarefas
+
+  Analisando sua solicitação para criar um épico brownfield, identifiquei uma incompatibilidade de escopo:
+
+  🔍 Problema Identificado
+
+  A tarefa brownfield-create-epic é para:
+  - Enhancements pequenos (1-3 stories)
+  - Sem mudanças arquiteturais significativas
+  - Integração mínima
+  - Baixo risco
+
+  Seu projeto EduDignity requer:
+  - Sistema completo com 7+ stories (já definidas no PRD)
+  - Mudanças arquiteturais substanciais
+  - Múltiplos pontos de integração
+  - Planejamento arquitetural completo
+
+  💡 Recomendações Alternativas
+
+  Como você já tem um PRD completo e detalhado para EduDignity, sugiro:
+
+  Opção 1: Usar épico existente do PRD
+
+  O PRD já contém épico estruturado com 7 stories bem definidas. Posso ajudar a:
+  - Detalhar stories individuais
+  - Criar acceptance criteria mais granulares
+  - Desenvolver planos de implementação
+
+  Opção 2: Quebrar em épicos menores
+
+  Se preferir épicos focados, posso dividir as 7 stories em 2-3 épicos temáticos:
+  - Épico 1: Infraestrutura + Core educacional (Stories 1.1, 1.2)
+  - Épico 2: UX + Coleta de dados (Stories 1.3, 1.4, 1.5)
+  - Épico 3: Features avançadas + Dashboard (Stories 1.6, 1.7)
+
+  Opção 3: Foco em MVP
+
+  Identificar subset mínimo viável do sistema para primeiro épico brownfield.
+
+  🎯 Qual abordagem prefere?
+
+  1. Detalhar stories do PRD existente
+  2. Dividir em épicos menores temáticos
+  3. Criar épico MVP focado
+  4. Outro direcionamento
+
+> 2
+
+● 📋 Divisão em Épicos Temáticos Menores
+
+  Baseado no PRD EduDignity, dividirei as 7 stories em 3 épicos brownfield focados, cada um com escopo gerenciável:
+
+  ---
+  🏗️ Épico 1: Fundação Técnica e Core Educacional
+
+  Epic Title
+
+  EduDignity Core Platform - Brownfield Enhancement
+
+  Epic Goal
+
+  Estabelecer infraestrutura offline-first robusta e implementar sistema core de blocos educacionais anti-infantilizados, criando base
+  técnica sólida para plataforma educacional em ambiente de vulnerabilidade socioeconômica.
+
+  Epic Description
+
+  Existing System Context:
+  - Current relevant functionality: Documentação conceitual e brief completo em docs/
+  - Technology stack: Sistema novo, stack proposto PWA + React + SQLite + PostgreSQL
+  - Integration points: Sincronização cloud, armazenamento local, interface responsiva
+
+  Enhancement Details:
+  - What's being added/changed: Infraestrutura offline-first + sistema de exercícios educacionais
+  - How it integrates: Arquitetura offline-first com sincronização automática quando conectividade disponível
+  - Success criteria: Sistema funciona completamente offline, exercícios carregam < 3s, design não-infantilizado validado
+
+  Stories
+
+  1. Story 1.1: Infraestrutura Base e Arquitetura Offline-First - Implementar Service Workers, SQLite local, sincronização cloud
+  2. Story 1.2: Sistema de Blocos Educacionais Matemática/Português - Interface respeitosa com exercícios por competência
+
+  Compatibility Requirements
+
+  - Sistema funciona em dispositivos Android básicos (2GB RAM)
+  - Compatibilidade com navegadores Chrome 70+, Firefox 65+
+  - Performance mantida mesmo com conectividade 3G
+  - Design anti-infantilizado apropriado para 8-11 anos
+
+  Risk Mitigation
+
+  - Primary Risk: Falha na sincronização offline/online causando perda de dados educacionais
+  - Mitigation: Backup redundante local + validação de integridade + testes extensivos em conectividade instável
+  - Rollback Plan: SQLite local mantém dados, possível rollback para versão anterior via controle de versão
+
+  ---
+  🎨 Épico 2: Experiência do Usuário e Coleta de Dados
+
+  Epic Title
+
+  EduDignity User Experience & Analytics - Brownfield Enhancement
+
+  Epic Goal
+
+  Implementar experiência de usuário personalizada e acessível com sistema robusto de coleta de dados educacionais, garantindo feedback
+  respeitoso e insights acionáveis para educadores.
+
+  Epic Description
+
+  Existing System Context:
+  - Current relevant functionality: Infraestrutura offline estabelecida (Épico 1)
+  - Technology stack: PWA com React, SQLite local, sistema de sync implementado
+  - Integration points: Sistema de exercícios existente, configurações de usuário, dashboard backend
+
+  Enhancement Details:
+  - What's being added/changed: Personalização de fontes, feedback contextual progressivo, coleta granular de dados
+  - How it integrates: Extensão do sistema de exercícios com camadas de UX e analytics
+  - Success criteria: Configurações persistem offline, feedback não-punitivo validado, dados coletados sem impacto na performance
+
+  Stories
+
+  1. Story 1.3: Sistema de Configuração de Fontes e Acessibilidade - Personalização respeitando necessidades visuais
+  2. Story 1.4: Coleta Detalhada de Dados por Questão - Analytics educacionais respeitando LGPD
+  3. Story 1.5: Sistema de Feedback Contextual Progressivo - Feedback construtivo sem infantilização
+
+  Compatibility Requirements
+
+  - Configurações sincronizam entre dispositivos compartilhados
+  - Fontes renderizam adequadamente em dispositivos baixo custo
+  - Coleta de dados não impacta responsividade da interface
+  - Feedback carrega instantaneamente (< 1s visual)
+
+  Risk Mitigation
+
+  - Primary Risk: Coleta excessiva de dados impactar performance ou violar privacidade de menores
+  - Mitigation: Anonização automática, coleta otimizada, compliance LGPD rigoroso, testes de performance
+  - Rollback Plan: Desabilitar coleta de dados via feature flag, manter funcionalidade core intacta
+
+  ---
+  🎵 Épico 3: Features Avançadas e Dashboard Educacional
+
+  Epic Title
+
+  EduDignity Advanced Features & Teacher Dashboard - Brownfield Enhancement
+
+  Epic Goal
+
+  Implementar recursos de concentração (música de fundo) e dashboard web completo para professores, finalizando ecossistema educacional com
+  visibilidade de progresso e ambiente otimizado para aprendizagem.
+
+  Epic Description
+
+  Existing System Context:
+  - Current relevant functionality: Sistema educacional core + UX personalizada + coleta de dados (Épicos 1-2)
+  - Technology stack: PWA completa, sistema de analytics implementado, backend para sincronização
+  - Integration points: Sistema de exercícios estabelecido, dados coletados, interface web responsiva
+
+  Enhancement Details:
+  - What's being added/changed: Música de fundo configurável + dashboard web para professores
+  - How it integrates: Extensão final do sistema com recursos de bem-estar e visibilidade educacional
+  - Success criteria: Música não impacta performance, dashboard carrega < 5s em conexões escolares limitadas
+
+  Stories
+
+  1. Story 1.6: Sistema de Música de Fundo Configurável - Ambiente de concentração personalizado
+  2. Story 1.7: Dashboard Web para Professores - Visualização de progresso e relatórios exportáveis
+
+  Compatibility Requirements
+
+  - Música compatível com fones básicos e alto-falantes móveis
+  - Dashboard funciona em computadores escolares antigos
+  - Audio não interfere com leitores de tela (acessibilidade)
+  - Interface web responsiva para diferentes resoluções
+
+  Risk Mitigation
+
+  - Primary Risk: Recursos de mídia causarem problemas de performance ou compatibilidade
+  - Mitigation: Codecs otimizados, fallbacks para dispositivos limitados, testes extensivos em hardware escolar
+  - Rollback Plan: Desabilitar música via configuração, dashboard como módulo separado removível
+
+  ---
+  📋 Sequência de Implementação Recomendada
+
+  1. Épico 1 → Base técnica sólida2. Épico 2 → UX e dados educacionais3. Épico 3 → Features finais e dashboard
+
+  Esta sequência minimiza riscos e entrega valor incremental, permitindo testes educacionais reais após cada épico.
+
+  🎯 Próximos Passos
+
+  Posso detalhar qualquer épico específico com:
+  - Acceptance criteria granulares por story
+  - Planos de implementação técnica
+  - Estratégias de teste específicas
+  - Handoff detalhado para desenvolvimento
+
+  Qual épico você gostaria que eu detalhe primeiro?
+
+> ok, prossiga com sua sequencia 1,2,3
+
+● Write(docs/epic-1-foundation-core.md)
+  ⎿  Wrote 216 lines to docs/epic-1-foundation-core.md          
+     # Epic 1: EduDignity Core Platform - Brownfield Enhancement
+     **Data de Criação:** 20/09/2025
+     **Épico:** 1 de 3
+     **Status:** Planejamento
+     **Estimativa:** 2-3 sprints
+     ---
+     ## Epic Goal
+     … +206 lines (ctrl+o to expand)
+
+● Write(docs/epic-2-ux-data.md)
+  ⎿  Wrote 300 lines to docs/epic-2-ux-data.md                                
+     # Epic 2: EduDignity User Experience & Analytics - Brownfield Enhancement
+     **Data de Criação:** 20/09/2025
+     **Épico:** 2 de 3
+     **Status:** Planejamento
+     **Dependência:** Epic 1 (Infraestrutura Base)
+     **Estimativa:** 2-3 sprints
+     ---
+     … +290 lines (ctrl+o to expand)
+
+● Write(docs/epic-3-advanced-dashboard.md)
+  ⎿  Wrote 285 lines to docs/epic-3-advanced-dashboard.md                               
+     # Epic 3: EduDignity Advanced Features & Teacher Dashboard - Brownfield Enhancement
+     **Data de Criação:** 20/09/2025
+     **Épico:** 3 de 3
+     **Status:** Planejamento
+     **Dependência:** Epic 1 + Epic 2 (Infraestrutura + UX completos)
+     **Estimativa:** 2-3 sprints
+     ---
+     … +275 lines (ctrl+o to expand)
+
+● Write(docs/implementation-roadmap.md)
+  ⎿  Wrote 213 lines to docs/implementation-roadmap.md
+     # EduDignity Implementation Roadmap
+     **Data de Criação:** 20/09/2025
+     **Criado por:** John - Product Manager
+     **Status:** Ready for Development
+     ---
+     ## 📋 **Documentação Completa Criada**
+     … +203 lines (ctrl+o to expand)
+
+● ✅ EduDignity - Épicos Completos Criados
+
+  📋 Documentação Finalizada
+
+  4 Documentos Técnicos Criados:
+
+  1. docs/prd.md - PRD brownfield completo
+  2. docs/epic-1-foundation-core.md - Fundação técnica (2 stories)
+  3. docs/epic-2-ux-data.md - UX personalizada e analytics (3 stories)
+  4. docs/epic-3-advanced-dashboard.md - Features finais + dashboard (2 stories)
+  5. docs/implementation-roadmap.md - Roadmap completo de implementação
+
+  🎯 Sistema Estruturado em 3 Épicos
+
+  📱 Epic 1: Fundação (Sprints 1-3)
+
+  - Infraestrutura offline-first robusta
+  - Sistema core exercícios anti-infantilizados
+
+  🎨 Epic 2: UX/Analytics (Sprints 4-6)
+
+  - Configuração fontes + acessibilidade
+  - Coleta dados educacionais LGPD-compliant
+  - Feedback contextual não-punitivo
+
+  🎵 Epic 3: Dashboard (Sprints 7-9)
+
+  - Música de fundo configurável
+  - Dashboard web para professores
+  - Relatórios exportáveis
+
+  📊 Escopo Total: 7 Stories | 6-9 Sprints
+
+  O sistema EduDignity está completamente planejado e ready para desenvolvimento.
+
+  Cada épico contém:
+  - ✅ Acceptance criteria detalhados
+  - ✅ Critérios técnicos específicos
+  - ✅ Estratégias de mitigação de risco
+  - ✅ Handoffs para Story Manager
+  - ✅ Definition of Done granular
+
+  Próximo passo recomendado: Início imediato do Epic 1 com setup do ambiente de desenvolvimento.
+
+> ótimo, pode encerrar a sua sessão
+
+● 📋 Sessão PM Finalizada
+
+  ✅ Entregáveis Completos
+
+  PRD Brownfield EduDignity criado com sucesso:
+  - 1 PRD completo + 3 épicos detalhados + roadmap de implementação
+  - 7 stories estruturadas para 6-9 sprints
+  - Sistema educacional anti-infantilização ready for development
+
+  🎯 Próximos Passos
+
+  Para continuar o desenvolvimento:
+  - *create-story - Detalhar stories individuais
+  - /BMad:agents:dev - Iniciar implementação técnica
+  - /BMad:agents:architect - Revisar arquitetura técnica
+
+  ---
+  Status: Projeto EduDignity completamente planejado e documentado.
+
+  Saindo do modo PM... 👋
+
