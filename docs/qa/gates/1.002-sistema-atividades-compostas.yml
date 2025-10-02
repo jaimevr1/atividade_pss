@@ -1,0 +1,477 @@
+schema: 1
+story: '1.002'
+story_title: 'Sistema de Atividades Compostas'
+gate: CONCERNS
+status_reason: 'Solid architectural foundation with clear orchestration components. Critical dependencies on US-001 and complex state management require robust architecture and testing before implementation. State consistency, data pipeline security, and progress persistence must be addressed.'
+reviewer: 'Quinn (Test Architect)'
+updated: '2025-10-01T00:00:00Z'
+review_stage: PLANNING
+
+# Planning Stage Note:
+# This gate assesses the story SPECIFICATION quality, not implementation.
+# Gate will be re-evaluated during code review when implementation exists.
+
+top_issues:
+  - id: 'ARCH-002'
+    severity: medium
+    finding: 'State management architecture not fully defined'
+    details: 'Complex multi-module state coordination requires detailed architecture. State consistency rules, conflict resolution, and recovery mechanisms not specified.'
+    suggested_action: 'Create ADR-004: Activity State Management Architecture with state machine diagram, persistence strategy, and conflict resolution rules'
+    suggested_owner: 'architect'
+
+  - id: 'PERF-004'
+    severity: medium
+    finding: 'Multi-module orchestration performance targets missing'
+    details: 'No specific targets for orchestration overhead, transition time, or data pipeline performance'
+    suggested_action: 'Add performance targets: orchestration <500ms, transitions <1s, pipeline transforms <50ms, multi-module memory strategy'
+    suggested_owner: 'po'
+
+  - id: 'DEP-001'
+    severity: medium
+    finding: 'Critical dependency on US-001 completion'
+    details: 'US-002 cannot succeed if US-001 has quality issues. State management problems will amplify across multiple modules.'
+    suggested_action: 'Verify US-001 passes all quality gates (especially state management and error isolation) before starting US-002'
+    suggested_owner: 'pm'
+
+  - id: 'REL-002'
+    severity: low
+    finding: 'Data pipeline validation strategy needs detail'
+    details: 'Inter-module data flow has security and reliability implications but validation approach not fully specified'
+    suggested_action: 'Define strict schemas for inter-module data, add sanitization layer, create module compatibility matrix'
+    suggested_owner: 'dev'
+
+  - id: 'TEST-002'
+    severity: low
+    finding: 'Subjective UX criteria in DoD'
+    details: '"Smooth transitions" lacks concrete definition, makes testing difficult'
+    suggested_action: 'Quantify "smooth" as: transitions <1s, no UI flicker, consistent animations, clear progress feedback'
+    suggested_owner: 'po'
+
+waiver:
+  active: false
+
+# Quality Metrics
+quality_score: 68
+calculation: '100 - (10 × CONCERNS state mgmt) - (10 × CONCERNS perf targets) - (5 × CONCERNS dependency) - (5 × CONCERNS data validation) - (2 × subjective UX) = 68'
+expires: '2025-10-15T00:00:00Z'  # 2 weeks for story refinement and dependency verification
+
+# Evidence from Assessment
+evidence:
+  planning_artifacts:
+    risk_profile: 'docs/qa/assessments/1.002-risk-20251001.md'
+    nfr_assessment: 'docs/qa/assessments/1.002-nfr-20251001.md'
+    test_design: 'docs/qa/assessments/1.002-test-design-20251001.md'
+    trace_matrix: 'docs/qa/assessments/1.002-trace-20251001.md'
+
+  tests_designed: 35
+  test_breakdown:
+    unit: 12
+    integration: 14
+    e2e: 6
+    security: 3
+
+  risks_identified: 8
+  risk_breakdown:
+    critical: 2  # DATA-002 (state mgmt), FLOW-001 (data pipeline)
+    high: 3      # PERSIST-001, SEQ-001, PERF-003
+    medium: 3    # UX-001, DATA-003, ORCH-001
+
+  trace:
+    ac_covered: [1, 2, 3]  # All 3 ACs have test coverage
+    ac_gaps: []  # No ACs lack coverage
+    coverage_pct: 91  # 10/11 requirements fully covered
+    partial_coverage: ['DoD-9 smooth transitions']
+
+# NFR Validation
+nfr_validation:
+  _assessed: [security, performance, reliability, maintainability]
+  _status: PLANNING
+
+  security:
+    status: PASS
+    notes: 'Inherits US-001 security foundation, new data flow validation needed'
+    strengths:
+      - 'Reuses US-001 ModuleValidator for activity configs'
+      - 'Activity schema structured, not user-generated code'
+      - 'Student data encryption via Supabase RLS'
+    requirements:
+      - 'Activity schema validation (reuse US-001 validator)'
+      - 'Data pipeline sanitization for inter-module data'
+      - 'Inter-module data isolation tests'
+    new_attack_surfaces:
+      - 'Inter-module data injection (module → module)'
+      - 'Activity config tampering (dataFlow modification)'
+      - 'Progress data exposure (student responses)'
+
+  performance:
+    status: CONCERNS
+    notes: 'Duration estimation defined (±10%) but orchestration performance targets missing'
+    targets_defined:
+      - 'Duration estimation accuracy: ±10% ✓'
+      - 'Smooth transitions: Not quantified ✗'
+      - 'Progress overhead: Not defined ✗'
+    gaps:
+      - 'No orchestration overhead target (recommend <500ms)'
+      - 'No transition time target (recommend <1s)'
+      - 'No data pipeline transform target (recommend <50ms)'
+      - 'No multi-module memory strategy (1 module = 50MB, what about 5?)'
+    requirements:
+      - 'Add orchestration performance targets to story'
+      - 'Define multi-module memory budget (3 modules: 120MB, 5 modules: 180MB)'
+      - 'Specify transition performance (<1s including save)'
+      - 'Add performance test suite to DoD'
+
+  reliability:
+    status: CONCERNS
+    notes: 'State management complexity requires proven architecture with robust error handling'
+    strengths:
+      - 'Progress persistence explicitly addressed (AC-3)'
+      - 'Interruption/resumption first-class requirement'
+      - 'Auto-save mentioned (every 30s)'
+    critical_gaps:
+      - 'State consistency rules not defined (ActivityOrchestrator vs module state)'
+      - 'Partial save failure handling not specified'
+      - 'Concurrent activity handling not addressed (same student, multiple tabs)'
+      - 'State recovery validation strategy missing'
+      - 'Data pipeline error cascading not specified'
+    blockers:
+      - 'State management architecture (ADR-004) not created'
+      - 'State consistency strategy undefined'
+      - 'Conflict resolution rules missing'
+    requirements:
+      - 'Create state machine diagram with all transitions'
+      - 'Implement dual persistence (localStorage + Supabase)'
+      - 'Add state validation on resume'
+      - 'Define conflict resolution (last-write-wins with timestamp)'
+      - 'Test all error isolation scenarios'
+
+  maintainability:
+    status: PASS
+    notes: 'Excellent component separation with clear single responsibilities'
+    strengths:
+      - 'ActivityOrchestrator: Main state machine ✓'
+      - 'ModuleSequencer: Transition logic (pure functions) ✓'
+      - 'DataPipeline: Transformation layer (schema-driven) ✓'
+      - 'ProgressTracker: Analytics persistence (isolated) ✓'
+      - 'Clear interfaces between components ✓'
+      - 'Integration tests planned in DoD ✓'
+    recommendations:
+      - 'Add state machine visualization tool (development aid)'
+      - 'Create activity configuration builder (prevent invalid configs)'
+      - 'Add data flow debugging/tracing capability'
+      - 'Build activity templates library (known-good configs)'
+
+# Risk Summary
+risk_summary:
+  totals:
+    critical: 2  # DATA-002 (score 9), FLOW-001 (score 9)
+    high: 3      # PERSIST-001, SEQ-001, PERF-003 (all score 6)
+    medium: 3    # UX-001, DATA-003, ORCH-001 (all score 4)
+    low: 0
+
+  highest:
+    - id: DATA-002
+      score: 9
+      title: 'Complex state management across multiple modules'
+      category: data
+      mitigation: 'Single source of truth (ActivityOrchestrator), immutable updates, state validation'
+    - id: FLOW-001
+      score: 9
+      title: 'Inter-module data pipeline failures'
+      category: flow
+      mitigation: 'Strict schemas, validation at boundaries, transformation registry, graceful defaults'
+
+  recommendations:
+    must_fix:
+      - 'Create ADR-004: State Management Architecture before implementation'
+      - 'Define strict inter-module data schemas with validation'
+      - 'Implement dual persistence (localStorage + Supabase) with retry logic'
+      - 'Verify US-001 quality gates PASS before starting US-002'
+      - 'Add state consistency tests (20+ scenarios)'
+
+    monitor:
+      - 'Duration estimation accuracy (track actual vs estimate)'
+      - 'State inconsistency rate (target <0.1%)'
+      - 'Data pipeline transformation failures (target <0.5%)'
+      - 'Activity resumption success rate (target >99%)'
+
+# Test Design Summary
+test_design:
+  scenarios_total: 35
+  by_level:
+    unit: 12
+    integration: 14
+    e2e: 6
+    security: 3
+  by_priority:
+    p0: 14  # Critical - block release
+    p1: 16  # Important - ship with known gaps
+    p2: 5   # Nice to have - future optimization
+  coverage_gaps:
+    - ac: 'DoD-9'
+      issue: 'Smooth transitions (subjective), quantified as <1s transition time'
+      mitigation: 'Performance tests + manual UX review'
+  state_management_focus:
+    - 'State machine transitions (8 scenarios designed)'
+    - 'State persistence and recovery (6 scenarios)'
+    - 'Concurrent activity handling (1 scenario)'
+    - 'State consistency validation (4 scenarios)'
+
+# Recommendations
+recommendations:
+  immediate:  # Before implementation starts
+    - action: 'Verify US-001 quality gate is PASS'
+      details: 'US-002 depends on US-001 foundation. Ensure state mgmt, error isolation, and performance are solid.'
+      priority: CRITICAL
+      refs: ['US-001 gate status', 'DEP-001 risk']
+
+    - action: 'Technical design session: State Management (4-6 hours)'
+      details: 'Create ADR-004 with state machine diagram, persistence strategy, conflict resolution'
+      priority: CRITICAL
+      refs: ['ARCH-002', 'DATA-002 risk mitigation']
+
+    - action: 'Story refinement: Performance targets (2 hours)'
+      details: 'Add orchestration <500ms, transitions <1s, pipeline <50ms, multi-module memory budget'
+      priority: HIGH
+      refs: ['PERF-004', 'NFR performance gaps']
+
+    - action: 'Technical design: Data pipeline architecture (3 hours)'
+      details: 'Define inter-module schemas, validation layer, transformation registry, compatibility matrix'
+      priority: HIGH
+      refs: ['FLOW-001 risk mitigation', 'REL-002']
+
+  before_deployment:  # During implementation
+    - action: 'Implement state management architecture'
+      details: 'Single source of truth, immutable updates, dual persistence, state validation'
+      priority: CRITICAL
+      refs: ['DATA-002 risk', 'ADR-004']
+
+    - action: 'Implement data pipeline validation'
+      details: 'Schema validation, sanitization, transformation with fallbacks'
+      priority: CRITICAL
+      refs: ['FLOW-001 risk', '1.002-SEC-001']
+
+    - action: 'Implement progress persistence with resilience'
+      details: 'Auto-save 30s, localStorage + Supabase, retry logic, conflict resolution'
+      priority: HIGH
+      refs: ['PERSIST-001 risk', 'AC-3.2, AC-3.3']
+
+    - action: 'Add state management test suite'
+      details: '20+ scenarios covering transitions, persistence, recovery, conflicts'
+      priority: HIGH
+      refs: ['Test design state management focus']
+
+  future:  # Post-MVP
+    - action: 'Activity builder UI (prevent invalid configs)'
+      details: 'Visual drag-drop activity creation with real-time validation'
+      priority: MEDIUM
+
+    - action: 'State visualization tool'
+      details: 'Debug tool showing activity state machine and data flow'
+      priority: LOW
+
+    - action: 'Duration accuracy tracking'
+      details: 'ML model to improve estimation based on actual completion data'
+      priority: LOW
+
+# Ready for Implementation Checklist
+ready_for_implementation:
+  dependencies:
+    - item: 'US-001 quality gate is PASS or PASS WITH MINOR ISSUES'
+      status: false
+      blocker: 'US-001 completion not verified'
+    - item: 'US-001 state management proven stable'
+      status: false
+      blocker: 'US-001 state tests not verified'
+    - item: 'US-001 error isolation working correctly'
+      status: false
+      blocker: 'US-001 error boundary tests not verified'
+
+  architecture:
+    - item: 'ADR-004: State Management Architecture created'
+      status: false
+      blocker: 'State management strategy not documented'
+    - item: 'State machine diagram documented'
+      status: false
+      blocker: 'Visual state model not created'
+    - item: 'Inter-module data schemas defined'
+      status: false
+      blocker: 'Data pipeline contracts not specified'
+    - item: 'Module compatibility matrix created'
+      status: false
+      blocker: 'Valid sequences not documented'
+
+  specification:
+    - item: 'Performance targets added to story'
+      status: false
+      blocker: 'Orchestration, transition, pipeline targets missing'
+    - item: 'State consistency rules defined'
+      status: false
+      blocker: 'Conflict resolution strategy not specified'
+    - item: '"Smooth transitions" quantified (DoD-9)'
+      status: false
+      blocker: 'Subjective criteria not made testable'
+
+  testing:
+    - item: 'State management test suite designed (20+ scenarios)'
+      status: true
+      blocker: null
+    - item: 'Data flow test suite designed (10+ scenarios)'
+      status: true
+      blocker: null
+    - item: 'Performance test suite designed'
+      status: true
+      blocker: null
+    - item: 'Test infrastructure ready (reuse US-001)'
+      status: false
+      blocker: 'Supabase test instance for persistence not configured'
+
+# Gate History
+history:
+  - date: '2025-10-01T00:00:00Z'
+    gate: CONCERNS
+    reviewer: 'Quinn'
+    stage: PLANNING
+    notes: 'Initial planning review - good foundation, critical architecture and dependency gaps'
+
+# Next Review
+next_review:
+  trigger: 'US-001 gate PASS AND ADR-004 created AND performance targets added OR implementation begins'
+  expected_date: '2025-10-08T00:00:00Z'
+  focus_areas:
+    - 'Verify US-001 dependency satisfaction'
+    - 'Verify ADR-004 state management architecture'
+    - 'Verify performance targets added to story'
+    - 'Review actual implementation against test design'
+
+# Notes for Development Team
+dev_notes: |
+  PLANNING STAGE ASSESSMENT
+
+  This story builds critical multi-module orchestration on US-001 foundation.
+
+  STRENGTHS:
+  - Excellent component architecture (Orchestrator, Sequencer, Pipeline, Tracker) ✓
+  - Clear acceptance criteria with Given-When-Then ✓
+  - Comprehensive test coverage planned (35 scenarios) ✓
+  - Strong risk awareness (8 risks identified, 2 critical) ✓
+  - Good dependency awareness (US-001 blocking) ✓
+
+  CRITICAL DEPENDENCIES:
+  1. US-001 MUST pass quality gates before US-002 starts
+     - State management must be proven stable
+     - Error isolation must work correctly
+     - Performance targets must be met
+     - If US-001 has issues, US-002 will amplify them 3-5x
+
+  MUST FIX BEFORE CODING:
+  1. Verify US-001 gate status is PASS (dependency gate check)
+  2. Create ADR-004: Activity State Management Architecture
+     - State machine diagram with all transitions
+     - Persistence strategy (localStorage + Supabase)
+     - Conflict resolution rules (last-write-wins)
+     - State validation on resume
+  3. Add performance targets to story:
+     - Orchestration overhead: <500ms
+     - Transition time: <1s (including save)
+     - Data pipeline transforms: <50ms
+     - Multi-module memory: 3 modules <120MB, 5 modules <180MB
+  4. Define inter-module data schemas and validation
+  5. Create module compatibility matrix
+  6. Quantify "smooth transitions" (DoD-9) as <1s + no flicker
+
+  ESTIMATED PREP TIME: ~20 hours
+  - US-001 dependency verification: 2 hours
+  - State management architecture (ADR-004): 6 hours
+  - Performance targets refinement: 2 hours
+  - Data pipeline design: 4 hours
+  - Module compatibility matrix: 2 hours
+  - Test infrastructure setup (Supabase): 4 hours
+
+  STATE MANAGEMENT IS CRITICAL:
+  - This is the highest risk area (DATA-002, score 9)
+  - Complex distributed state across multiple modules
+  - Single source of truth in ActivityOrchestrator
+  - Dual persistence (local + remote) required
+  - State validation on every load/resume
+  - Comprehensive testing (20+ state scenarios)
+
+  Once prep items complete and US-001 verified, story is READY FOR IMPLEMENTATION.
+
+  All planning artifacts available in docs/qa/assessments/1.002-*.md
+
+  Questions? Contact Quinn (QA) for clarification.
+
+# Performance Budget
+performance_budget:
+  single_module:  # US-001 baseline
+    initialization: '2s'
+    memory: '50MB'
+    validation: '100ms'
+
+  three_module_activity:  # US-002 target
+    total_initialization: '3s (includes orchestration overhead)'
+    total_memory: '120MB (modules + orchestrator state)'
+    activity_setup: '500ms (sequencing + validation)'
+    per_transition: '1s (save + load + transform)'
+
+  five_module_activity:  # US-002 stress
+    total_initialization: '5s (acceptable degradation)'
+    total_memory: '180MB (warn if >200MB)'
+    activity_setup: '800ms'
+    per_transition: '1s (same, isolated)'
+
+  warning_thresholds:
+    modules: '>7 modules: Show "long activity" warning'
+    memory: '>200MB: Show "performance may be affected"'
+    duration: '>30min estimated: Suggest "break into multiple activities"'
+
+# Compliance
+compliance:
+  bmad_methodology: true
+  story_template_followed: true
+  test_design_complete: true
+  risk_assessment_complete: true
+  nfr_assessment_complete: true
+  trace_matrix_complete: true
+  dependency_analysis_complete: true
+
+# Key Metrics for Monitoring
+monitoring_kpis:
+  state_management:
+    - metric: 'State inconsistency rate'
+      target: '<0.1%'
+      alert_threshold: '>0.5%'
+    - metric: 'State recovery success rate'
+      target: '>99%'
+      alert_threshold: '<95%'
+
+  data_flow:
+    - metric: 'Pipeline transformation failures'
+      target: '<0.5%'
+      alert_threshold: '>2%'
+    - metric: 'Schema validation failures'
+      target: '<1%'
+      alert_threshold: '>5%'
+
+  performance:
+    - metric: 'Duration estimation accuracy'
+      target: '±10%'
+      alert_threshold: '>±20%'
+    - metric: 'Transition time (p95)'
+      target: '<1s'
+      alert_threshold: '>2s'
+    - metric: 'Orchestration overhead (p95)'
+      target: '<500ms'
+      alert_threshold: '>1s'
+
+  user_experience:
+    - metric: 'Activity completion rate'
+      target: '>85%'
+      alert_threshold: '<70%'
+    - metric: 'Activity resumption rate'
+      target: '>60% (students who return)'
+      alert_threshold: '<40%'
+    - metric: 'Data loss incidents'
+      target: '0'
+      alert_threshold: '>0'

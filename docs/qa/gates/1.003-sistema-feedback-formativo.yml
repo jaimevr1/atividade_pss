@@ -1,0 +1,208 @@
+schema: 1
+story: '1.003'
+story_title: 'Sistema de Feedback Formativo'
+gate: CONCERNS
+status_reason: 'Strong pedagogical foundation with clear emotional design principles. Critical gaps in message bank content, pedagogical review process, and emotional impact validation before implementation.'
+reviewer: 'Quinn (Test Architect)'
+updated: '2025-10-01T00:00:00Z'
+review_stage: PLANNING
+
+top_issues:
+  - id: 'CONTENT-001'
+    severity: high
+    finding: 'Message bank content not created or reviewed'
+    details: 'No actual feedback messages exist yet. Pedagogical appropriateness cannot be validated without real content.'
+    suggested_action: 'Create initial message bank (50+ messages), Brazilian educator review, age-appropriateness testing'
+    suggested_owner: 'po'
+
+  - id: 'PSYCH-001'
+    severity: high
+    finding: 'Emotional impact validation process undefined'
+    details: 'Story requires "user testing shows positive emotional response" in DoD but no validation methodology specified'
+    suggested_action: 'Define emotional impact testing protocol: surveys, observation, A/B testing framework'
+    suggested_owner: 'ux-expert'
+
+  - id: 'PERF-001'
+    severity: medium
+    finding: 'Performance target (<100ms) challenging with message selection logic'
+    details: 'Complex message selection by subject/concept/type/difficulty may exceed 100ms without optimization'
+    suggested_action: 'Design message caching strategy, preload for active concepts, performance benchmarking'
+    suggested_owner: 'dev'
+
+  - id: 'ACCESS-001'
+    severity: medium
+    finding: 'Screen reader feedback announcements not specified'
+    details: 'Visual feedback defined but ARIA live regions for screen readers not mentioned'
+    suggested_action: 'Add accessibility requirements: ARIA live="polite", clear announcement text'
+    suggested_owner: 'dev'
+
+  - id: 'INTEG-001'
+    severity: low
+    finding: 'Integration with all module types not detailed'
+    details: 'Each module may require different feedback contexts and message types'
+    suggested_action: 'Create module-specific feedback integration guide'
+    suggested_owner: 'dev'
+
+waiver:
+  active: false
+
+quality_score: 72
+calculation: '100 - (10 × CONCERNS message bank) - (10 × CONCERNS emotional validation) - (5 × CONCERNS performance) - (3 × CONCERNS accessibility) = 72'
+expires: '2025-10-15T00:00:00Z'
+
+evidence:
+  planning_artifacts:
+    risk_profile: 'docs/qa/assessments/1.003-risk-20251001.md'
+    nfr_assessment: 'docs/qa/assessments/1.003-nfr-20251001.md'
+    test_design: 'docs/qa/assessments/1.003-test-design-20251001.md'
+    trace_matrix: 'docs/qa/assessments/1.003-trace-20251001.md'
+
+  tests_designed: 28
+  test_breakdown:
+    unit: 10
+    integration: 12
+    e2e: 4
+    accessibility: 2
+
+  risks_identified: 7
+  risk_breakdown:
+    critical: 1
+    high: 3
+    medium: 3
+
+nfr_validation:
+  _assessed: [security, performance, reliability, maintainability, usability]
+  _status: PLANNING
+
+  security:
+    status: PASS
+    notes: 'Minimal attack surface - static message bank, no user input in feedback generation'
+
+  performance:
+    status: CONCERNS
+    notes: 'Target <100ms defined but message selection complexity may challenge this'
+    targets:
+      - 'Feedback display: <100ms after response submission'
+      - 'Animation duration: 600ms max'
+      - 'Message selection: <50ms from bank'
+    gaps:
+      - 'Message caching strategy not defined'
+      - 'Performance benchmarking not in test plan'
+
+  reliability:
+    status: PASS
+    notes: 'Simple, stateless feedback generation - low reliability risk'
+
+  maintainability:
+    status: CONCERNS
+    notes: 'Message bank maintenance could become complex without good tooling'
+    requirements:
+      - 'Message bank versioning strategy'
+      - 'A/B testing framework for message optimization'
+      - 'Teacher configuration for feedback style'
+
+  usability:
+    status: CONCERNS
+    notes: 'Critical - pedagogical appropriateness and emotional impact must be validated'
+    blockers:
+      - 'Message bank content not created'
+      - 'Emotional impact testing methodology undefined'
+      - 'Age-appropriateness validation process missing'
+
+risk_summary:
+  totals:
+    critical: 1
+    high: 3
+    medium: 3
+    low: 0
+
+  highest:
+    - id: PSYCH-002
+      score: 9
+      title: 'Feedback perceived as condescending or patronizing'
+      category: psychological
+
+recommendations:
+  immediate:
+    - action: 'Create initial message bank with Brazilian educator'
+      details: '50+ messages covering math/Portuguese, correct/incorrect, difficulty levels'
+      priority: CRITICAL
+
+    - action: 'Define emotional impact testing protocol'
+      details: 'User surveys, engagement metrics, A/B testing framework'
+      priority: CRITICAL
+
+    - action: 'Add accessibility requirements to ACs'
+      details: 'ARIA live regions, screen reader announcements, keyboard interaction'
+      priority: HIGH
+
+  before_deployment:
+    - action: 'Conduct user testing with 9-12 year olds'
+      details: 'Validate emotional response, measure engagement vs frustration'
+      priority: CRITICAL
+
+    - action: 'Performance benchmark message selection'
+      details: 'Ensure <100ms with realistic message bank size (500+ messages)'
+      priority: HIGH
+
+ready_for_implementation:
+  content:
+    - item: 'Initial message bank created (50+ messages)'
+      status: false
+      blocker: 'No messages exist yet'
+    - item: 'Brazilian educator review complete'
+      status: false
+      blocker: 'Awaiting content creation'
+    - item: 'Age-appropriateness validated'
+      status: false
+      blocker: 'Awaiting content creation'
+
+  testing:
+    - item: 'Emotional impact testing protocol defined'
+      status: false
+      blocker: 'Methodology not specified'
+    - item: 'A/B testing framework ready'
+      status: false
+      blocker: 'Framework not designed'
+
+  technical:
+    - item: 'Message caching strategy designed'
+      status: false
+      blocker: 'Performance strategy incomplete'
+    - item: 'Accessibility requirements added to ACs'
+      status: false
+      blocker: 'ARIA specs missing'
+
+dev_notes: |
+  PLANNING STAGE ASSESSMENT - PEDAGOGICAL MODULE
+
+  This story is unique in Epic 1 as it's primarily about CONTENT QUALITY and EMOTIONAL IMPACT,
+  not just technical implementation.
+
+  STRENGTHS:
+  - Clear pedagogical principles (formative, not punitive) ✓
+  - Specific performance target (<100ms) ✓
+  - Emotional design considerations ✓
+  - Examples provided for each feedback type ✓
+
+  CRITICAL CONTENT GAPS:
+  1. Message bank doesn't exist yet (only 4 examples in story)
+  2. No pedagogical review process defined
+  3. No emotional impact validation methodology
+  4. Age-appropriateness criteria not quantified
+
+  MUST CREATE BEFORE CODING:
+  - Initial message bank (50+ messages minimum for MVP)
+  - Emotional impact testing protocol
+  - Brazilian educator review checklist
+  - Message bank management tooling
+
+  ESTIMATED PREP TIME: ~24 hours
+  - Message bank creation: 12 hours
+  - Educator review: 4 hours
+  - Emotional testing protocol: 4 hours
+  - Accessibility specs: 2 hours
+  - Performance benchmarking: 2 hours
+
+  This is a CONTENT-FIRST story. Technical implementation is straightforward,
+  but content quality is CRITICAL to product success.

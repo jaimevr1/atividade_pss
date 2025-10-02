@@ -1,0 +1,172 @@
+schema: 1
+story: 'M14'
+story_title: 'Módulo AutoAvaliação'
+gate: CONCERNS
+status_reason: 'Excellent psychological design with clear metacognitive goals. Critical gaps: privacy protection implementation undefined, calibration tracking algorithm not specified, emotional impact validation required.'
+reviewer: 'Quinn (Test Architect)'
+updated: '2025-10-01T00:00:00Z'
+review_stage: PLANNING
+
+top_issues:
+  - id: 'PRIVACY-001'
+    severity: high
+    finding: 'Privacy protection implementation not detailed'
+    details: 'DoD requires "privacy protection (student responses confidential)" but no technical implementation specified'
+    suggested_action: 'Define privacy architecture: data encryption, access controls, RLS policies, LGPD compliance'
+    suggested_owner: 'dev'
+
+  - id: 'CALIB-001'
+    severity: high
+    finding: 'Calibration tracking algorithm undefined'
+    details: 'Story mentions "calibration trend: improving" but no formula for calculating calibration accuracy'
+    suggested_action: 'Define calibration formula: abs(selfRating - actualPerformance), trend calculation, threshold definitions'
+    suggested_owner: 'dev'
+
+  - id: 'PSYCH-003'
+    severity: high
+    finding: 'Emotional impact validation process required'
+    details: 'DoD requires "user testing shows positive emotional impact" but no validation protocol'
+    suggested_action: 'Create emotional validation protocol: surveys, observation metrics, safety validation'
+    suggested_owner: 'ux-expert'
+
+  - id: 'TEACHER-001'
+    severity: medium
+    finding: 'Teacher misuse prevention not addressed'
+    details: 'Story identifies risk "Teachers misuse calibration data" but only mentions "training, privacy guidelines"'
+    suggested_action: 'Define teacher dashboard limitations, data access controls, usage guidelines, training requirements'
+    suggested_owner: 'po'
+
+waiver:
+  active: false
+
+quality_score: 74
+calculation: '100 - (10 × CONCERNS privacy) - (8 × CONCERNS calibration) - (5 × CONCERNS emotional validation) - (3 × CONCERNS teacher misuse) = 74'
+
+nfr_validation:
+  _assessed: [security, privacy, psychological_safety, usability, educational_value]
+  _status: PLANNING
+
+  security:
+    status: PASS
+    notes: 'No external input, minimal attack surface'
+
+  privacy:
+    status: CONCERNS
+    notes: 'Privacy principles clear but implementation undefined'
+    blockers:
+      - 'Data encryption at rest not specified'
+      - 'Supabase RLS policies for student data not designed'
+      - 'Access control matrix (who sees what) not defined'
+      - 'LGPD compliance checklist missing'
+
+  psychological_safety:
+    status: CONCERNS
+    notes: 'Excellent design principles (no wrong answers, warm colors) but validation missing'
+    requirements:
+      - 'Student safety validation with psychologist/educator'
+      - 'Emotional impact testing protocol'
+      - 'Parent/guardian consent process for data collection'
+
+  usability:
+    status: PASS
+    notes: 'Simple interface, clear options, age-appropriate language'
+
+  educational_value:
+    status: CONCERNS
+    notes: 'Metacognition goals clear but measurement undefined'
+    gaps:
+      - 'Calibration improvement thresholds not defined'
+      - 'Success metrics for metacognitive development unclear'
+      - 'Teacher action triggers from calibration data not specified'
+
+risk_summary:
+  totals:
+    critical: 2
+    high: 2
+    medium: 2
+
+  highest:
+    - id: PSYCH-004
+      score: 9
+      title: 'Students give "safe" answers instead of honest self-assessment'
+      category: psychological
+    - id: PRIVACY-002
+      score: 9
+      title: 'Student self-assessment data leaked or misused'
+      category: privacy
+
+recommendations:
+  immediate:
+    - action: 'Define privacy architecture with encryption and RLS'
+      priority: CRITICAL
+
+    - action: 'Document calibration calculation formula and thresholds'
+      priority: CRITICAL
+
+    - action: 'Create emotional impact validation protocol'
+      priority: CRITICAL
+
+    - action: 'Design teacher dashboard with data access controls'
+      priority: HIGH
+
+  before_deployment:
+    - action: 'LGPD compliance review'
+      priority: CRITICAL
+
+    - action: 'Parent/guardian consent process implementation'
+      priority: HIGH
+
+    - action: 'Psychologist/educator safety validation'
+      priority: HIGH
+
+ready_for_implementation:
+  privacy:
+    - item: 'Supabase RLS policies defined for student self-assessment data'
+      status: false
+    - item: 'Data encryption at rest configured'
+      status: false
+    - item: 'Access control matrix documented (student/teacher/admin)'
+      status: false
+    - item: 'LGPD compliance checklist complete'
+      status: false
+
+  algorithms:
+    - item: 'Calibration calculation formula defined'
+      status: false
+      blocker: 'abs(selfRating/4 - actualPerformance) with trend over time?'
+    - item: 'Calibration trend categories defined (underestimate/accurate/overestimate)'
+      status: false
+    - item: 'Teacher recommendation trigger logic specified'
+      status: false
+
+  validation:
+    - item: 'Emotional impact testing protocol created'
+      status: false
+    - item: 'Psychological safety reviewed by specialist'
+      status: false
+
+dev_notes: |
+  M14 IS PSYCHOLOGICALLY SENSITIVE - REQUIRES SPECIALIST INPUT
+
+  This module collects sensitive self-perception data from children.
+  Privacy and psychological safety are PARAMOUNT.
+
+  SPECIALIST REVIEWS REQUIRED:
+  - Educational psychologist (emotional safety)
+  - Data privacy specialist (LGPD compliance)
+  - Brazilian educator (cultural appropriateness)
+
+  PRIVACY-FIRST IMPLEMENTATION:
+  - Student data never visible to peers
+  - Teacher dashboard shows trends only, not raw responses
+  - Parent/guardian consent for data collection
+  - Data retention limits (delete after X months)
+
+  ESTIMATED PREP: ~20 hours
+  - Privacy architecture: 6 hours
+  - Calibration algorithms: 4 hours
+  - Emotional validation protocol: 4 hours
+  - Teacher dashboard design: 4 hours
+  - LGPD compliance: 2 hours
+
+  PLUS: Specialist reviews (external dependency, timeline varies)

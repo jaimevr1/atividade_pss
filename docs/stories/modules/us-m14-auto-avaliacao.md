@@ -268,3 +268,45 @@ Desenvolve **metacognição** e **autorregulação da aprendizagem**, competênc
 - Peer comparison (anonymous, opt-in)
 - Goal-setting integration
 - Parent/guardian insights (with permission)
+
+---
+
+## QA Results
+
+### Review Date: 2025-10-01
+### Reviewed By: Quinn (Test Architect)
+### Review Stage: PLANNING
+
+**Gate**: CONCERNS → docs/qa/gates/epic1-m14-auto-avaliacao.yml
+**Quality Score**: 74/100
+
+### Key Findings
+
+**PSYCHOLOGICALLY SENSITIVE** - Collects self-perception data from children, requires specialist input
+
+**Strengths**:
+- ✓ Excellent psychological design (no wrong answers, warm colors, growth mindset)
+- ✓ Clear metacognitive goals (self-awareness, calibration development)
+- ✓ Simple, age-appropriate interface
+
+**Critical Gaps**:
+1. **Privacy protection implementation undefined** (HIGH) - LGPD compliance, encryption, RLS policies not specified
+2. **Calibration tracking algorithm not documented** (HIGH) - How to calculate calibration accuracy and trends?
+3. **Emotional impact validation required** (HIGH) - DoD requires positive impact but no protocol
+4. **Teacher misuse prevention incomplete** (MEDIUM) - Dashboard limitations, access controls, usage guidelines needed
+
+### Blockers - SPECIALIST REVIEWS REQUIRED
+- [ ] Define privacy architecture (Supabase RLS, encryption at rest, access control matrix, LGPD compliance)
+- [ ] Document calibration formula (abs(selfRating/4 - actualPerformance), trend calculation, thresholds)
+- [ ] Create emotional impact validation protocol (surveys, observation, safety validation)
+- [ ] Design teacher dashboard with data access controls (trends only, not raw responses)
+- [ ] Parent/guardian consent process for data collection
+
+**Required Specialist Reviews**:
+- Educational psychologist (emotional safety)
+- Data privacy specialist (LGPD compliance)
+- Brazilian educator (cultural appropriateness)
+
+**Estimated Prep Time**: ~20 hours (6h privacy, 4h calibration, 4h emotional validation, 4h teacher dashboard, 2h LGPD) + external specialist reviews
+
+**Recommended Status**: ⚠ Changes Required - Privacy and psychological safety are PARAMOUNT. Student data never visible to peers, strict access controls required.

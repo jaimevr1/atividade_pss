@@ -1,0 +1,154 @@
+schema: 1
+story: 'M5'
+story_title: 'Módulo IdentificaOperação'
+gate: CONCERNS
+status_reason: 'Excellent educational concept integrating math + Portuguese. Critical gaps: 70-problem content bank not created, keyword effectiveness unvalidated, Brazilian educator review required.'
+reviewer: 'Quinn (Test Architect)'
+updated: '2025-10-01T00:00:00Z'
+review_stage: PLANNING
+
+top_issues:
+  - id: 'CONTENT-003'
+    severity: high
+    finding: '70-problem content bank required but not created'
+    details: 'Story requires 20 addition, 20 subtraction, 15 multiplication, 15 division problems. Only 1 example exists.'
+    suggested_action: 'Create full problem bank with Brazilian contexts, educator review, ambiguity elimination'
+    suggested_owner: 'po'
+
+  - id: 'KEYWORD-001'
+    severity: high
+    finding: 'Keyword teaching effectiveness not validated'
+    details: 'Keywords listed (ganhou, perdeu, cada, repartir) but no validation that students recognize them'
+    suggested_action: 'Validate keywords with Brazilian students, test regional variations, adjust vocabulary'
+    suggested_owner: 'ux-expert'
+
+  - id: 'CULTURE-001'
+    severity: medium
+    finding: 'Brazilian cultural context requirements vague'
+    details: 'Story mentions "Brazilian cultural references" but no specific guidelines or examples beyond Real currency'
+    suggested_action: 'Create cultural context guidelines: appropriate scenarios, name diversity, regional sensitivity'
+    suggested_owner: 'po'
+
+  - id: 'AMBIG-001'
+    severity: high
+    finding: 'Problem ambiguity elimination process undefined'
+    details: 'DoD requires "single correct operation (no ambiguity)" but no validation process specified'
+    suggested_action: 'Create problem review checklist, peer review process, student confusion testing'
+    suggested_owner: 'ux-expert'
+
+waiver:
+  active: false
+
+quality_score: 68
+calculation: '100 - (10 × CONCERNS content bank) - (10 × CONCERNS keyword validation) - (7 × CONCERNS ambiguity) - (5 × CONCERNS culture) = 68'
+
+nfr_validation:
+  _assessed: [educational_quality, accessibility, content_quality, cultural_appropriateness]
+  _status: PLANNING
+
+  educational_quality:
+    status: CONCERNS
+    notes: 'BNCC alignment clear (EF04MA07 + EF04LP15) but content validation missing'
+    blockers:
+      - 'Problem bank not created (70 problems required)'
+      - 'Brazilian educator review not planned'
+      - 'Difficulty progression not validated'
+      - 'Keyword effectiveness not tested with students'
+
+  accessibility:
+    status: PASS
+    notes: 'Keyboard navigation and screen readers mentioned, good foundation'
+
+  content_quality:
+    status: CONCERNS
+    notes: 'Quality criteria defined (age-appropriate, single operation, realistic) but validation process missing'
+    requirements:
+      - 'Age-appropriate vocabulary validation (9-12 years)'
+      - 'Ambiguity elimination peer review'
+      - 'Gender-neutral language check'
+      - 'Context variety validation (5 categories: school, home, play, nature, community)'
+
+  cultural_appropriateness:
+    status: CONCERNS
+    notes: 'Brazilian context required but guidelines incomplete'
+    gaps:
+      - 'Regional vocabulary variations not addressed (pt-BR dialects)'
+      - 'Cultural sensitivity guidelines missing'
+      - 'Local context examples needed (beyond Real currency)'
+
+risk_summary:
+  totals:
+    critical: 2
+    high: 3
+    medium: 2
+
+  highest:
+    - id: CONTENT-004
+      score: 9
+      title: 'Problems ambiguous or confusing to students'
+      category: educational
+    - id: KEYWORD-002
+      score: 9
+      title: 'Keywords not recognized due to regional variations'
+      category: linguistic
+
+recommendations:
+  immediate:
+    - action: 'Create full 70-problem content bank'
+      details: '20 add, 20 sub, 15 mult, 15 div with Brazilian contexts'
+      priority: CRITICAL
+
+    - action: 'Validate keywords with Brazilian students'
+      details: 'Test recognition of ganhou, perdeu, cada, repartir, adjust for regions'
+      priority: CRITICAL
+
+    - action: 'Brazilian educator content review'
+      details: 'Ambiguity check, age-appropriateness, cultural sensitivity'
+      priority: CRITICAL
+
+    - action: 'Create cultural context guidelines'
+      details: 'Define appropriate scenarios, name diversity, regional sensitivity'
+      priority: HIGH
+
+ready_for_implementation:
+  content:
+    - item: '20 addition problems created'
+      status: false
+    - item: '20 subtraction problems created'
+      status: false
+    - item: '15 multiplication problems created'
+      status: false
+    - item: '15 division problems created'
+      status: false
+    - item: 'Brazilian educator review complete'
+      status: false
+
+  validation:
+    - item: 'Keyword recognition tested with students'
+      status: false
+    - item: 'Ambiguity elimination review complete'
+      status: false
+    - item: 'Cultural appropriateness validated'
+      status: false
+
+dev_notes: |
+  M5 INTEGRATES MATH + PORTUGUESE - UNIQUE EDUCATIONAL VALUE
+
+  This module is pedagogically innovative but CONTENT-INTENSIVE.
+  Cannot implement without complete problem bank and validation.
+
+  CONTENT-FIRST APPROACH REQUIRED:
+  1. Create problem bank (70 problems)
+  2. Brazilian educator review
+  3. Student keyword validation
+  4. Cultural sensitivity check
+  5. THEN implement technical system
+
+  ESTIMATED CONTENT CREATION: ~40 hours
+  - Problem writing: 20 hours (70 problems × 15-20 min each)
+  - Educator review: 8 hours
+  - Keyword validation: 4 hours
+  - Cultural guidelines: 4 hours
+  - Ambiguity testing: 4 hours
+
+  Technical implementation: ~15 hours (simple after content ready)
